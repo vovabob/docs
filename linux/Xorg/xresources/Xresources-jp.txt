@@ -1,0 +1,185 @@
+* Resource Database --- $HOME/.Xresources
+
+#undef SET_FONT
+#ifdef XMiNT
+#       define FONT16
+#       define SET_FONT
+#       define EMACS_GEOM	78x54+1-1	
+#       define BUTTONS_GEOM      +714+49
+#endif
+#ifdef tube
+#       define FONT16
+#       define SET_FONT
+#       define EMACS_GEOM	70x48+1-1	
+#       define BUTTONS_GEOM     +644+10
+#endif
+#ifdef dome
+#       define FONT16
+#       define SET_FONT
+#       define EMACS_GEOM	70x48+1-1	
+#       define BUTTONS_GEOM     +644+10
+#endif
+#ifdef JCC
+#       define FONT16
+#       define SET_FONT
+#endif
+#ifndef SET_FONT
+#       define FONT14
+#endif
+
+#ifdef FONT24   /* Xstation &amp; XMiNT */
+#       define A_FONT   -rom-fixed-medium-r-normal--24-170-100-\
+100-c-120-iso8859-1
+#       define K_FONT   -rom-fixed-medium-r-normal--24-170-100-\
+100-c-240-jisx0208.1983-0
+#endif
+#ifdef FONT18   /* XMiNT only */
+#       define A_FONT   -rom-fixed-medium-r-nomal--18-140-100-\
+100-c-90-iso8859-1
+#       define K_FONT   -rom-fixed-medium-r-normal--18-140-100-\
+100-c-180-jisx0208.1983-0
+#endif
+#ifdef FONT16   /* X11R4 */
+#       define A_FONT   serif16
+#       define K_FONT   k16
+#endif
+#ifdef Font18   /* X11R4 */
+#       define A_FONT   serif18
+#       define K_FONT   k18
+#endif
+#ifdef FONT14   /* IBM terminal */
+#       define A_FONT   a14
+#       define K_FONT   k14
+#endif
+
+/* 以下は、白黒、カラー共通 */
+/* kterm の 設定です。*/
+kterm*scrollBar:		on
+kterm*visualfBell:		off
+kterm*loginShell:		on
+kterm*Font:             A_FONT
+kterm*kanjiFont:        K_FONT
+KTerm*Font:             A_FONT
+KTerm*kanjiFont:        K_FONT
+KTerm*VT100*Translations: #override Shift<key>space: begin-conversion(JAPANESE_CONVERSION)
+!kTerm*Geometry:         KTERM_GEOM
+!KTerm*Geometry:         KTERM_GEOM
+/* emacs の 設定です。*/
+nemacs*Geometry:        EMACS_GEOM
+emacs*Geometry:         EMACS_GEOM
+mule*Geometry:          78x45+1-1 /* mule は emacs と 行間隔が異なります。*/
+                                  /* cent0のmuleは .cshrc で alias で調整 */
+Emacs*Geometry:         EMACS_GEOM
+Emacs*font:             A_FONT
+Emacs*fontjp:           K_FONT
+Emacs*fontcn:           cclib16st
+Emacs*fontbig5:         hku-ch16
+buttons*geometry:	BUTTONS_GEOM
+*font:                  A_FONT
+*kanjiFont:             K_FONT
+xclock*Geometry:        129x129-0-0
+!KTerm*Title:           kterm @ HOST
+!XTerm*Title:           xterm @ HOST
+!xman*Title:            xman @ HOST
+! don,t use for emacs
+!emacs*Title:           emacs @ HOST
+XConsole.geometry:      +0-0
+XConsole*text.width:    500
+XConsole*text.height:   120
+/* xvgr の 設定です。*/
+
+Xvgr*geometry: 550x900+313+60
+View*geometry: +109+61
+
+/* 全般的な 設定です。*/
+/* *logFile:				XtermLog.XXXXX */
+/* *logging:				false */
+*multiScroll:				true
+*nMarginBell:				2
+*pointerColor:				black
+*pointerShape:				xterm
+*reverseVideo:				false
+*reverseWrap:				true
+*saveLines:				128
+*scrollBar:				true
+*scrollInput:				true
+*scrollKey:				false
+*signalInhibit:				false
+*tekInhibit:				false
+titleBar:				true
+/* tgif+ 用の設定です */
+*Tgif*AutoKinput:			on
+*Tgif*KanjiMinchou8:			K_FONT
+*Tgif*KanjiMinchou10:			K_FONT
+*Tgif*KanjiMinchou12:			K_FONT
+*Tgif*KanjiMinchou14:			K_FONT
+*Tgif*KanjiMinchou16:			K_FONT
+*Tgif*KanjiMinchou18:			K_FONT
+
+
+#ifdef COLOR
+/* カラーの場合 */
+*Command.Foreground:    Navy
+*Command.background:    MediumGoldenrod
+!*Command.Font:         7x11
+!KTerm*Background:      pale green
+!KTerm*Background:      dark turquoise
+!KTerm*Foreground:      yellow
+!KTerm*Foreground:      Navy
+KTerm*Foreground:       black
+!KTerm*Background:      MediumGoldenrod
+KTerm*Background:       white
+!KTerm*BorderColor:     white
+KTerm*curses:           on
+!KTerm*font:            xs16a
+!KTerm*kanjiFont:       xs16k
+KTerm*jumpScroll:       on
+KTerm*multiScroll:      on
+KTerm*reverseWrap:      on
+!emacs*Font:            xs16a
+!emacs*kanjiFont:       xs16k
+!emacs*Foreground:      yellow
+!emacs*Background:      dark turquoise
+emacs*Foreground:       Navy
+emacs*Background:       MediumGoldenrod
+Emacs*Foreground:       Navy
+Emacs*Background:       MediumGoldenrod
+!emacs*Background:      dark grey
+!emacs*BordeColor:      white
+!emacs*cursorColor:     CadetBlue
+Emacs*cursorColor:      CadetBlue
+emacs*pointerColor:     black
+!xbiff*Foreground:      dark turquoise
+xbiff*Foreground:       CadetBlue
+xbiff*Background:       white
+xbiff*borderWidth:      0
+xbiff*reverseVideo:     on
+xbiff*Geometry:         -110-145
+!xclock*Foreground:     plum
+!xclock*Background:     VioletRed
+!xclock*Foreground:     gray85
+xclock*Foreground:      black
+xclock*Background:      white
+!xclock*Background:     CadetBlue
+!xclock*BorderColor:    red
+xclock*boderWidth:      2
+xclock*analog:          on
+xclock*padding:         2
+xload*Background:       black
+!xload*Foreground:      cyan
+xload*Foreground:       white
+xload*Geometry:         99x84-0-145
+xman*Geometry:          120x70-10-250
+xman*manualBrowser*Geometry:            700x930-10+25
+#else
+/* 白黒の場合 */
+!KTerm*font:            serif16
+!KTerm*kanjiFont:       k16
+!emacs*Font:            serif16
+!emacs*kanjiFont:       k16
+xbiff*Geometry:         -240-45
+xload*Geometry:         99x84-134-45
+xman*Geometry:          120x70-300-45
+xman*manualBrowser*Geometry:            560x720-10+25
+XMol*colorDisplay:			False
+#endif

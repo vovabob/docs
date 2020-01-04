@@ -1,0 +1,229 @@
+#.ratpoisonrc --- my own ratpoison customizations
+
+#Copyright (C) 2006 by maru dubshinki
+
+#Author: maru dubshinki <marudubshinki0@gmail.com>
+#License: BSD license, minus advertising clause.
+#Where: http://en.wikipedia.org/wiki/User:Marudubshinki/.ratpoisonrc
+#When:  Time-stamp: "2006-09-06 18:22:39 maru"
+#Keywords: local,customization,ratpoison
+
+#Commentary
+#This is my own all-singing all-dancing personal ratpoisonrc. 
+#It depends on two scripts, rpws, and expose (which can either be gotten
+#at Reactorcore or at the ratpoison wiki) and a number of other programs, chief
+#among which are xclip, surfraw, and firefox.
+#Anyway, there are three main sections, so to speak.
+#The first tweaks some ratpoison settings directly. The main feature of 
+#note is the changing of the escape sequence from two keys, C-t, to a single
+#key (called by ratpoison "less"), and the mirroring of less with another key,
+#so there are actually two equivalent escape keys.
+#The second section runs a number of programs like unclutter. This section generally
+#modifies X, modifies the keybindings (i.e making caps lock a control), and runs some
+#useful programs if possible.
+#The third section handles application key bindings. My general philosophy here has 
+#been to make the lower-case key invoke the "heavy" or feature-rich version of the 
+#idealized type of application, and the uppercase one runs a different, smaller and 
+#lighter-weight application which does much the same thing. For example, d runs 
+#Firefox, and D runs terminal elinks. e runs Emacs, and E runs nano in a terminal.
+#And so on.
+
+##change directory to $HOME
+chdir
+
+##What's the shell?
+alias term exec aterm
+
+##Banish the mouse with each screenchange
+#addhook switchwin banish
+
+##Setting the prefix keys
+###Set the ctrl-t key to something easier
+escape less
+
+###Set the ctrl-t key to something easier
+definekey top Insert readkey root
+definekey root Insert link less
+
+##Set the mouse warping option.
+warp on
+
+##Hush up, ratpoison. I know what the prefix key is.
+startup_message off
+
+##There are three different ways ratpoison can "name" frames.
+##By title, name, or class. Title gets you gunk like "emacs@localhost.localdomain";
+##but name and class give you the sensible "emacs" or "Emacs". 
+set winname class
+
+##Graphics tweaks
+###Not quite sure what these do, copied from Reactor Core.
+###Supposedly make borders take up less space.
+defborder 0
+defpadding 0 0 0 0
+defbarpadding 0 0 
+
+#This was suggested on the ratpoison wiki as a way to
+#make messages clearer. Doesn't work right now. Maybe I have the wrong
+#font name?
+#deffont -etl-*-*-r-*-*-*-400-*-*-*-*-*-*
+
+##What programs do we run on startup?
+###Do some key re-mapping
+exec xmodmap -quiet ~/.Xmodmap
+
+###Apparently modifies some low-level GUI bits of X.
+exec xrdb -load ~/.Xresources
+
+###Change the background and pointer in X
+#exec xsetroot -solid black -cursor_name left_ptr
+exec xsetroot -cursor_name left_ptr
+
+###I like astronomical images. Let us make use of xplanet.
+#exec xplanet -body earth -fork -random -light_time -transparency -wait 60
+
+####This is an alternative- setting electricsheep as the background.
+#exec electricsheep --root 1 --nick maru --zoom 1 --mplayer 1 --history 50 &
+
+###Set a background, randomly picking from a certain directory.
+exec cd ~/pics && xsetbg -border black -fork -type jpeg -fit -onroot -fullscreen `w=(*.jpg); n=${#w[@]}; echo "${w[RANDOM%n]}"` && cd ~/
+#exec xsetbg -border black -fork -type jpeg -fit -onroot -fullscreen `w=(*.jpg); n=${#w[@]}; echo "~/pics/${w[RANDOM%n]}"`
+
+###Run unclutter so the mouse hangs around no longer than needed.
+exec unclutter -idle 1 -jitter 2 -root
+
+###I use xscreensaver as a screensaver. The first line makes sure any running xscreensaver is killed.
+###The second starts and backgrounds xscreensaver
+exec xscreensaver-command -exit
+exec xscreensaver &
+
+###This should set up rpws and groups
+###http://ratpoison.elektrubadur.se/rpws
+exec rpws -i
+exec rpws -b
+###This should be pretty obvious. Why not use function keys?
+bind F1 exec ~/bin/rpws 1
+bind F2 exec ~/bin/rpws 2
+bind F3 exec ~/bin/rpws 3
+bind F4 exec ~/bin/rpws 4
+bind F5 exec ~/bin/rpws 5
+bind F6 exec ~/bin/rpws 6
+bind F7 exec ~/bin/rpws 7
+bind F8 exec ~/bin/rpws 8
+bind F9 exec ~/bin/rpws 9
+bind F10 exec ~/bin/rpws 10
+bind F11 exec ~/bin/rpws 11
+bind F12 exec ~/bin/rpws 12
+
+###xbindkeys can alias for some neat things.
+#This is last- low priority. Commented out, currently does nothing,
+#exec xbindkeys
+
+
+
+
+##aliasing keys within ratpoison
+###make semicolon invoke ratpoison command, and colon shell command.
+bind semicolon colon
+bind colon exec
+
+###Show-the-root-window script
+alias showroot exec ratpoison -c fdump; ratpoison -c 'select -' -c only
+alias unshowroot exec ratpoison -c "frestore `cat $HOME/.rpfdump`"
+#bind B showroot
+
+###Change the date from 24-hour to 12-hour
+bind a time
+
+###(Getting a root terminal. There is no binding for "c", since that
+###is a default binding, to a terminal.)
+###I've since changed this since I don't use it very often.
+#bind C exec ssh -X root@127.0.0.1 aterm
+bind C colon exec aterm -e 
+
+###Shortcut for emacs. Emacsclient is called, but it expects
+###a filename. This can be circumvented by instructing it to
+###instead evaluate a Emacslisp expression- the current one
+###says "open up a new frame on the current display device".
+###It has to be quoted or else sh will try to open up the lisp
+###expression in a sub-shell as a shell command.
+###Neatly, if an emacs isn't already running, then emacsclient runs
+###$EDITOR, which points back to regular emacs!
+bind M-e exec emacsclient --eval '(make-frame-command)'
+###Shortcut for nano
+bind M-E exec aterm -e nano
+
+###Shortcut for firefox
+bind d exec mozilla-firefox
+#bind d exec mozilla-firefox & ratpoison -c "title firefox"
+
+###A new hack using xclip (which prints out the current text selection) to
+###open up a new tab in a running firefox with the address as the current selection.
+###The idea is, you highlight an URL and then instead of manually inputting it,
+###simply whack R-b ('b' standing for "browse").
+#bind b exec mozilla-firefox -new-tab `xclip -o`
+bind B exec mozilla-firefox -new-tab `$RATPOISON -c getsel`
+bind b colon exec mozilla-firefox 
+
+###Shortcut for elinks
+bind D elinks http://www.google.com/
+#bind B elinks http://www.google.com/
+
+###Shortcut for dillo- currently I use elinks instead. dillo's 
+###keyboard commands are too awkward as of yet.
+#bind D exec dillo
+
+###Shortcut for gqview
+bind g exec gqview +t
+
+###Binding for xpdf
+bind x exec xpdf
+
+###Runs a perl script which emulates the Mac's expose feature.
+###http://ratpoison.elektrubadur.se/expose.pl
+bind w exec ~/bin/expose.pl
+
+###Runs a shell script which creates an alt-tab menu analog
+###http://reactor-core.org/ratpoison-config.html
+bind W exec ~/bin/windows
+
+###Make prtscreen work, as long as in ratpoison mode. "import" is an Imagemagick command.
+bind Print exec import -window root png:$HOME/xwd-$(date +%s)$$.png
+
+###Crikey, I'm gonna need a separate section just for surfraw shortcuts.
+###Anyway, the model for these (thanks to aon) is "bind r colon exec surfraw wikipedia "- note
+###the space. If the space isn't there, then the user will need to manually add a space, which is not good
+###In the shell, one can omit the surfraw command, but not in ratpoison, as ratpoison's PATH currently does
+###not include the directory with the elvi in it.
+###List of useful surfraw elvi follows:
+###amazon bbcnews cia cite cnn debbugs debcontents deblists deblogs debpackages debpts deja dmoz ebay etym freshmeat google imdb rfc rhyme slashdot sourceforgen translate
+
+###Surfraw aliases.
+alias cnn exec surfraw cnn
+alias debbugs exec surfraw debbugs
+alias debbug debbugs
+alias debpackages exec surfraw debpackages
+alias google exec surfraw google
+alias gutenberg exec surfraw gutenberg
+alias surfraw exec surfraw
+alias wayback exec surfraw wayback
+alias wikipedia exec surfraw wikipedia
+alias wookieepedia exec wookieepedia
+
+###Surfraw keybindings
+bind t colon wikipedia 
+#bind t exec wikipedia `xclip -o` #See previous comment for R-b
+bind T exec wikipedia `$RATPOISON -c getsel`
+bind E google `$RATPOISON -c getsel`
+bind e colon google 
+#bind T colon google 
+bind Y colon wayback 
+bind y colon wookieepedia 
+bind u colon debbugs 
+bind U colon debpackages 
+
+##Aliasing long commands within ratpoison
+###Leaving open the option to use conkeror, a skin over firefox.
+###Wish I could get sane tabbed browsing in it...
+alias conkeror exec mozilla-firefox -chrome chrome://conkeror/content
+alias elinks exec aterm -e elinks

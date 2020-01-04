@@ -1,0 +1,128 @@
+# o----------------------o
+# |:::RATPOISON CONFIG:::|
+# o----------------------o
+
+#<------------------------->
+
+
+## Change directory to $HOME
+chdir
+
+## What's the shell?
+#alias xterm exec urxvtzsh
+
+## There are three different ways ratpoison can "name" frames.
+## By title, name, or class. Title gets you gunk like:
+## "emacs@localhost.localdomain";
+## but name and class give you the sensible "emacs" or "Emacs". 
+set winname class
+
+## Change the date from 24-hour to 12-hour
+bind a time
+
+##Say "hello"
+startup_message on
+
+##Banish mouse
+addhook switchwin banish
+
+## Leave these alone
+unmanage MPlayer
+unmanage conky
+unmanage panel
+
+## Font specification
+
+
+## Invoke dmenu
+#definekey top M-p exec $(dmenu_path | dmenu)
+
+#Workspaces
+#exec rpws -i
+#exec /usr/bin/rpws init 6 -k
+#bind C-1 exec rpws 1
+#bind C-2 exec rpws 2
+#bind C-3 exec rpws 3
+#bind C-4 exec rpws 4 
+
+##Define an area for Conky & style the cli
+set wingravity center
+ set transgravity center
+ set bargravity n
+ set border 0 0
+ set barborder 1
+ set padding 0 16 0 0
+ set barpadding 1 1
+ set inputwidth 100
+# set font -*-fixed-*-*-*-*-12-*-*-*-*-*-*-*
+ set font -*-terminus-medium-r-normal-*-14-*-*-*-*-*-*-*
+ set bgcolor #FAF0E6 
+ set fgcolor #534B4F
+ msgwait 3
+
+
+#Workspaces (Native)
+gnew net
+gnewbg edit
+gnewbg play
+gnewbg talk
+gnewbg five
+gnewbg six
+gnewbg seven
+gnewbg eight
+gnewbg nine
+gmerge default
+gdelete default
+
+#ALT + F* for workspace switching
+definekey top M-1 exec ratpoison -c "gselect 1" -c "select -" -c "only" -c "next" -c "echo net"
+definekey top M-2 exec ratpoison -c "gselect 2" -c "select -" -c "only" -c "next" -c "echo edit"
+definekey top M-3 exec ratpoison -c "gselect 3" -c "select -" -c "only" -c "next" -c "echo play"
+definekey top M-4 exec ratpoison -c "gselect 4" -c "select -" -c "only" -c "next" -c "echo talk"
+definekey top M-5 exec ratpoison -c "gselect 5" -c "select -" -c "only" -c "next" -c "echo five"
+definekey top M-6 exec ratpoison -c "gselect 6" -c "select -" -c "only" -c "next" -c "echo six"
+definekey top M-7 exec ratpoison -c "gselect 7" -c "select -" -c "only" -c "next" -c "echo seven"
+definekey top M-8 exec ratpoison -c "gselect 8" -c "select -" -c "only" -c "next" -c "echo eight"
+definekey top M-9 exec ratpoison -c "gselect 9" -c "select -" -c "only" -c "next" -c "echo nine"
+
+#Keypad for workspace switching
+#definekey top KP_1 exec ratpoison -c "gselect 1" -c "select -" -c "only" -c "next" -c "echo net"
+#definekey top KP_2 exec ratpoison -c "gselect 2" -c "select -" -c "only" -c "next" -c "echo edit"
+#definekey top KP_3 exec ratpoison -c "gselect 3" -c "select -" -c "only" -c "next" -c "echo play"
+#definekey top KP_4 exec ratpoison -c "gselect 4" -c "select -" -c "only" -c "next" -c "echo talk"
+#definekey top KP_5 exec ratpoison -c "gselect 5" -c "select -" -c "only" -c "next" -c "echo five"
+#definekey top KP_6 exec ratpoison -c "gselect 6" -c "select -" -c "only" -c "next" -c "echo six"
+#definekey top KP_7 exec ratpoison -c "gselect 7" -c "select -" -c "only" -c "next" -c "echo seven"
+#definekey top KP_8 exec ratpoison -c "gselect 8" -c "select -" -c "only" -c "next" -c "echo eight"
+#definekey top KP_9 exec ratpoison -c "gselect 9" -c "select -" -c "only" -c "next" -c "echo nine"
+
+
+#Set Wallpaper
+
+#exec feh --bg-scale /usr/home/purgatori/images/wallpaper/hdwp.png #My 1st Holly Dee wall 
+#exec feh --bg-scale  images/wallpaper/wallpaper-1086202.jpg #Aly Bikini
+#exec feh --bg-scale images/wallpaper/wallpaper-1456439.jpg #Succubus
+#exec feh --bg-scale images/wallpaper/wallpaper-1934603.jpg #Fallout Girl
+#exec feh --bg-scale images/wallpaper/wallpaper-667220.jpg #Cammy
+#exec feh --bg-scale images/wallpaper/wallpaper-1868855.png #X-Blades
+#exec feh --bg-scale images/wallpaper/The_Veronicas.jpg #Veronicas, dark
+#exec feh --bg-scale images/wallpaper/ksenia-wallpaper15.jpeg #Ksenia, LG
+#exec feh --bg-scale images/wallpaper/wallpaper-1086200.jpg #Aly Cleavage
+#exec feh --bg-scale ~/images/wallpaper/X-23-x-men-25044260-1920-1080.jpg #X-23
+#exec feh --bg-scale images/wallpaper/rachel-emily-nichols_148417-1920x1080.jpg #Rachel Nichols
+#exec feh --bg-scale images/wallpaper/alyson_michalka_1298509099.jpg #Aly, Hellcats
+#exec feh --bg-tile downloads/Eva-Green-Poison-wallpapers-eva-green-8023651-1680-1050.jpg #Eva, Blue
+#exec feh --bg-scale images/wallpaper/psylocke-x-men-7051143-1680-1050.jpg #Psylocke
+#exec feh --bg-scale images/wallpaper/wallpaper-1377988.jpg #Tank-Girl
+#exec feh --bg-scale images/wallpaper/wallpaper-290415.jpg #Chun Li
+#exec feh --bg-scale images/wallpaper/wallpaper-1435951.jpg #Orb Girl
+#exec feh --bg-scale images/wallpaper/wallpaper-1091574.jpg #Girl Reading
+#exec feh --bg-scale images/wallpaper/wallpaper_10.jpg #Jellybean Visualization
+#exec  feh --bg-center images/wallpaper/shadow_hearts_covenant_01_1600x1200.jpg #Shadow Hearts: Covenant
+#exec feh --bg-scale images/wallpaper/android-jelly-bean-abstract-1920x1080.jpg #JellyBean Abstract
+exec feh --bg-scale images/wallpaper/vampiressworship-96005.jpeg #Vampiress
+
+##Start Conky
+exec conky
+exec urxvtd
+#exec emacs --daemon
