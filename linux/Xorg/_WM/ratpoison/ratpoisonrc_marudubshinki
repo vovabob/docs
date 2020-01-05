@@ -1,27 +1,27 @@
 #.ratpoisonrc --- my own ratpoison customizations
 
 #Copyright (C) 2006 by maru dubshinki
-
 #Author: maru dubshinki <marudubshinki0@gmail.com>
-#License: BSD license, minus advertising clause.
 #Where: http://en.wikipedia.org/wiki/User:Marudubshinki/.ratpoisonrc
 #When:  Time-stamp: "2006-09-06 18:22:39 maru"
 #Keywords: local,customization,ratpoison
 
-#Commentary
 #This is my own all-singing all-dancing personal ratpoisonrc. 
 #It depends on two scripts, rpws, and expose (which can either be gotten
 #at Reactorcore or at the ratpoison wiki) and a number of other programs, chief
 #among which are xclip, surfraw, and firefox.
-#Anyway, there are three main sections, so to speak.
-#The first tweaks some ratpoison settings directly. The main feature of 
+# There are three sections, so to speak:
+#
+# 1) tweaks some ratpoison settings directly. The main feature of 
 #note is the changing of the escape sequence from two keys, C-t, to a single
 #key (called by ratpoison "less"), and the mirroring of less with another key,
 #so there are actually two equivalent escape keys.
-#The second section runs a number of programs like unclutter. This section generally
+#
+# 2) runs a number of programs like unclutter. This section generally
 #modifies X, modifies the keybindings (i.e making caps lock a control), and runs some
 #useful programs if possible.
-#The third section handles application key bindings. My general philosophy here has 
+#
+# 3) application key bindings: my general philosophy here has 
 #been to make the lower-case key invoke the "heavy" or feature-rich version of the 
 #idealized type of application, and the uppercase one runs a different, smaller and 
 #lighter-weight application which does much the same thing. For example, d runs 
@@ -118,9 +118,6 @@ bind F12 exec ~/bin/rpws 12
 ###xbindkeys can alias for some neat things.
 #This is last- low priority. Commented out, currently does nothing,
 #exec xbindkeys
-
-
-
 
 ##aliasing keys within ratpoison
 ###make semicolon invoke ratpoison command, and colon shell command.

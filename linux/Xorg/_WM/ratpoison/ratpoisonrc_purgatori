@@ -2,9 +2,6 @@
 # |:::RATPOISON CONFIG:::|
 # o----------------------o
 
-#<------------------------->
-
-
 ## Change directory to $HOME
 chdir
 
@@ -12,8 +9,8 @@ chdir
 #alias xterm exec urxvtzsh
 
 ## There are three different ways ratpoison can "name" frames.
-## By title, name, or class. Title gets you gunk like:
-## "emacs@localhost.localdomain";
+## By title, name, or class. 
+## Title gets you gunk like: "emacs@localhost.localdomain";
 ## but name and class give you the sensible "emacs" or "Emacs". 
 set winname class
 
