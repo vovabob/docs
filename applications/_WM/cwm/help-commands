@@ -4,9 +4,9 @@ terminal  				Spawn a new terminal.
 lock 					Lock the screen.
 menu-window 			Launch window search menu.
 menu-window-hidden 		Launch hidden window search menu.
-menu-cmd 				Launch application search menu.
+menu-cmd 				Show application menu.
 menu-group 				Launch group search menu.
-menu-exec 				Launch “exec program” menu.
+menu-exec 				Show “exec program” menu.
 menu-exec-wm 			Launch “exec WindowManager” menu.
 menu-ssh 				Launch “ssh” menu.
 group-toggle-[n] 		Toggle visibility of group n, where n is 1-9.

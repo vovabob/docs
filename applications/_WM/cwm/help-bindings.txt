@@ -6,7 +6,7 @@ M-Return 		Hide current window.
 M-Down 			Lower current window.
 M-Up 			Raise current window.
 M-slash 		Search for windows.
-C-slash 		Search for applications.
+C-slash 		Menu of applications, as per .cwmrc
 CM-n 			Label current window.
 M-Tab 			Cycle through currently visible windows.
 MS-Tab  		Reverse cycle through currently visible windows.
