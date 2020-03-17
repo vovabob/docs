@@ -1,0 +1,11 @@
+convert -size 100x100 xc:wheat  canvas_wheat.gif
+
+convert -size 10x120  gradient:darkcyan-snow  gradient_snow_scape.jpg
+
+convert -size 100x100  plasma:blue  plasma_range1.jpg
+
+convert -size 100x100  plasma:grey-grey  plasma_grey.jpg
+
+convert image.png xc:blue +append image.png
+
+convert image.png xc:"rgb(255,255,0)" +append image.png
