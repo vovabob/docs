@@ -4,7 +4,7 @@ token: 				9b3a810f-9af0-4d9b-8bba-2dbd2e226d48
 token generated: 	1 year ago
 created date:		Mar 11, 2019 1:27:56 PM
 
-br-vm1		35.226.163.95
-bwl-wm2 	34.82.114.187
+gvm1		35.226.163.95
+gwm2 	34.82.114.187
 ovm			152.67.108.54
 vovabob 	35.226.163.95
