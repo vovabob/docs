@@ -1,0 +1,30 @@
+
+
+
+--- Terminal codes ---
+  t_AB=^[[4%p1%dm     t_CS=               t_ke=               t_RI=^[[%p1%dC      t_SR=               t_ut=y
+  t_AF=^[[3%p1%dm     t_Cs=               t_ks=               t_Ri=               t_sr=^[M            t_VS=
+  t_AU=               t_CV=               t_le=^H             t_RS=               t_ST=               t_WP=
+  t_AL=^[[%p1%dL      t_da=               t_mb=^[[5m          t_RT=               t_Te=               t_WS=
+  t_al=^[[L           t_db=               t_md=^[[1m          t_RV=               t_te=               t_xn=y
+  t_bc=               t_DL=^[[%p1%dM      t_me=^[[m^O         t_Sb=               t_TE=               t_xs=
+  t_BE=               t_dl=^[[M           t_mr=^[[7m          t_SC=               t_ti=               t_ZH=^[[7m
+  t_BD=               t_EC=               t_ms=y              t_se=^[[27m         t_TI=               t_ZR=^[[m^O
+  t_cd=^[[J           t_EI=               t_nd=^[[C           t_Sf=               t_Ts=               t_8f=
+  t_ce=^[[K           t_fs=               t_op=^[[39;49m      t_SH=               t_ts=               t_8b=
+  t_cl=^[[H^[[J       t_GP=               t_RF=               t_SI=               t_u7=^[[6n          t_8u=
+  t_Ce=               t_IE=               t_RB=               t_Si=               t_ue=^[[24m
+  t_Co=8              t_IS=               t_RC=               t_so=^[[7m          t_us=^[[4m
+  t_cm=^[[%i%p1%d;%p2%dH
+  t_cs=^[[%i%p1%d;%p2%dr
+  t_vb=^[[?5h$<200/>^[[?5l
+  t_ve=^[[?25h^[[?0c
+  t_vi=^[[?25l^[[?1c
+  t_vs=^[[?25h^[[?8c
+--- Terminal keys ---
+t_@7 <End>       ^[[4~     t_k4 <F4>        ^[[[D     t_k; <F10>       ^[[21~    t_kb <BS>        ^?                         ^[MG
+t_F1 <F11>       ^[[23~    t_k5 <F5>        ^[[[E     t_kB <S-Tab>     ^[[Z      t_kd <Down>      ^[[B           <DecMouse>  ^[[
+t_F2 <F12>       ^[[24~    t_k6 <F6>        ^[[17~    t_kD <Del>       ^[[3~     t_kh <Home>      ^[[1~          <NetMouse>  ^[}
+t_k1 <F1>        ^[[[A     t_k7 <F7>        ^[[18~    t_kI <Insert>    ^[[2~     t_kl <Left>      ^[[D
+t_k2 <F2>        ^[[[B     t_k8 <F8>        ^[[19~    t_kN <PageDown>  ^[[6~     t_kr <Right>     ^[[C
+t_k3 <F3>        ^[[[C     t_k9 <F9>        ^[[20~    t_kP <PageUp>    ^[[5~     t_ku <Up>        ^[[A
