@@ -1,0 +1,33 @@
+https://wiki.archlinux.org/index.php/Systemd-nspawn
+---------------------------------------------------
+Create and boot a minimal Arch Linux container
+---------------------------------------------------
+
+1). First install arch-install-scripts.
+
+2). Create a directory to hold the container: ~/MyContainer.
+
+3). Use pacstrap to install a basic Arch system into the container: at minimum we need the 'base' package group.
+
+# pacstrap -c ~/MyContainer base [additional packages/groups]
+
+NOTE: The base package does not depend on the linux kernel package and is container-ready.
+
+4). Once installation finished, chroot into the container, and set a root password:
+
+# systemd-nspawn -D ~/MyContainer
+# passwd
+# logout
+
+NOTE: We just chrooting into container, without booting it.
+
+5). Finally, boot into the container:
+
+# systemd-nspawn -b -D ~/MyContainer
+
+The -b option will boot the container (i.e. run systemd as PID=1), instead of just running a shell, 
+and -D specifies the directory that becomes the container's root directory.
+
+6). After the container starts, log in as "root" with your password.
+
+### eof

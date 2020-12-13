@@ -1,0 +1,28 @@
+https://wiki.archlinux.org/index.php/Systemd-nspawn#Use_a_network_bridge
+------------------------------------------------------------------------
+If you have configured a network bridge on the host system, you can create a virtual Ethernet link 
+for the container and add its host side to the network bridge. 
+
+This is done with the --network-bridge=bridge-name option. 
+Note that --network-bridge implies --network-veth, i.e. the virtual Ethernet link is created automatically. 
+However, the host side of the link will use the vb- prefix instead of ve-, 
+so the systemd-networkd options for starting the DHCP server and IP masquerading will not be applied.
+
+The bridge management is left to the administrator. For example, 
+the bridge can connect virtual interfaces with a physical interface, 
+or it can connect only virtual interfaces of several containers. 
+
+See systemd-networkd#Network bridge with DHCP and 
+systemd-networkd#Network bridge with static IP addresses for example configurations using systemd-networkd.
+
+There is also a --network-zone=zone-name option which is similar to --network-bridge 
+but the network bridge is managed automatically by systemd-nspawn and systemd-networkd. 
+The bridge interface named vz-zone-name is automatically created when the first container 
+configured with --network-zone=zone-name is started, and is automatically removed when the last container 
+configured with --network-zone=zone-name exits. Hence, this option makes it easy to place multiple related 
+containers on a common virtual network. 
+
+Note that vz-* interfaces are managed by systemd-networkd same way as ve-* interfaces 
+using the options from the /usr/lib/systemd/network/80-container-vz.network file.
+
+### eof
