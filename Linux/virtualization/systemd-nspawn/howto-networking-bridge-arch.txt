@@ -1,0 +1,21 @@
+https://wiki.archlinux.org/index.php/Systemd-networkd#Network_bridge_with_static_IP_addresses
+-----------------------------------------------------------------------
+To get configure a static IP address on the container, we need to override the system 
+/usr/lib/systemd/network/80-container-host0.network file, which provides a DHCP configuration 
+for the host0 network interface of the container. 
+
+This can be done by placing the configuration into /etc/systemd/network/80-container-host0.network :
+
+/etc/systemd/network/80-container-host0.network
+[Match]
+Name=host0
+
+[Network]
+DNS=192.168.1.254
+Address=192.168.1.94/24
+Gateway=192.168.1.254
+
+Make sure that systemd-networkd.service is enabled in the container.
+
+
+### eof

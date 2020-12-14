@@ -1,0 +1,10 @@
+--bind=, --bind-ro=
+
+Bind mount a file or directory from the host into the container. 
+Takes one of: a path argument — in which case the specified path will be mounted from the host to the same path in the container, 
+or a colon-separated pair of paths — in which case the first specified path is the source in the host, 
+and the second path is the destination in the container, or a colon-separated triple of source path, destination path and mount options. 
+The source path may optionally be prefixed with a "+" character. If so, the source path is taken relative to the image's root directory. 
+This permits setting up bind mounts within the container image. 
+
+The source path may be specified as empty string, in which case a temporary directory below the host's /var/tmp/ directory is used.

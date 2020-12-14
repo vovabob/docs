@@ -19,7 +19,8 @@ NOTE: The base package does not depend on the linux kernel package and is contai
 # passwd
 # logout
 
-NOTE: We just chrooting into container, without booting it.
+NOTES: a) We just chrooting into container, without booting it.
+	b) if 'exit' is used instead of 'logout', there is an error message: ...
 
 5). Finally, boot into the container:
 
